@@ -1,0 +1,553 @@
+/* ==========================================
+   1. VARIABLES DE DISEÑO (Colores y Fuentes)
+   ========================================== */
+   :root {
+    --bg-card: rgba(15, 23, 42, 0.45); /* Tarjetas semi-transparentes */
+    --text-main: #f8fafc;     
+    --text-muted: #94a3b8;    
+    --accent: #2dd4bf;        /* Turquesa de acento */
+    --font-title: 'Space Grotesk', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ==========================================
+   2. PERSONALIZACIÓN DE LA BARRA DE SCROLL (Sincronizado con el fondo)
+   ========================================== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Hace el track transparente para que se vea el Liquid Gradient de fondo */
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(45, 212, 191, 0.25);
+    border-radius: 10px;
+    border: 2px solid transparent; /* Crea un efecto flotante sobre el fondo */
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Soporte para Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(45, 212, 191, 0.25) transparent;
+}
+
+/* ==========================================
+   3. ESTILOS GENERALES Y LIQUID WAVE GRADIENT
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    padding: 0 1.5rem;
+    overflow-x: hidden;
+    position: relative;
+    
+    /* Fondo base ultra oscuro */
+    background-color: #060913;
+
+    /* Gradientes radiales interactivos superpuestos (Liquid Gradient) */
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(45, 212, 191, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(14, 116, 144, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(15, 23, 42, 0.9) 0%, transparent 60%),
+        radial-gradient(circle at 90% 10%, rgba(45, 212, 191, 0.12) 0%, transparent 35%),
+        radial-gradient(circle at 10% 90%, rgba(14, 165, 233, 0.15) 0%, transparent 45%);
+    
+    background-size: 200% 200%;
+    animation: liquidWave 20s ease-in-out infinite alternate;
+}
+
+/* Animación que simula el movimiento del fluido / líquido */
+@keyframes liquidWave {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; /* Asegura que el contenido quede por encima del efecto del fondo */
+}
+
+/* ==========================================
+   4. SISTEMA DE TRADUCCIÓN LIMPIO CON JS
+   ========================================== */
+.text-en {
+    display: none !important;
+}
+.text-es {
+    display: inline-block;
+}
+p.text-es, h2.text-es, h1.text-es {
+    display: block;
+}
+
+body.lang-en .text-es {
+    display: none !important;
+}
+body.lang-en .text-en {
+    display: inline-block !important;
+}
+body.lang-en p.text-en, 
+body.lang-en h2.text-en, 
+body.lang-en h1.text-en {
+    display: block !important;
+}
+
+.lang-label {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.lang-label:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ==========================================
+   5. MENÚ DE NAVEGACIÓN (Navbar responsivo)
+   ========================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 10;
+    flex-wrap: wrap; /* Permite que el menú baje si no hay espacio */
+    gap: 1rem;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap; /* Evita desbordamiento en dispositivos pequeños */
+}
+
+.navbar nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    white-space: nowrap; /* Evita que los textos de los enlaces se corten en dos líneas */
+}
+
+.navbar nav a:hover {
+    color: var(--accent);
+}
+
+.github-icon {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.github-icon:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.github-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ==========================================
+   6. HERO SECTION
+   ========================================== */
+.hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 0;
+}
+
+.greeting {
+    color: var(--accent);
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.main-title {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-family: var(--font-title);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.description {
+    max-width: 650px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent);
+    color: #060913;
+    box-shadow: 0px 0px 15px rgba(45, 212, 191, 0.3);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    border: 2px solid transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    color: var(--text-main);
+    border-color: var(--text-muted);
+}
+
+.btn-secondary svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ==========================================
+   7. FILTRADO DE PROYECTOS CON CSS PURO
+   ========================================== */
+.projects-section {
+    padding: 6rem 0;
+}
+
+.section-title {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.filter-radio {
+    display: none;
+}
+
+.filter-container {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-label:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+#filter-all:checked ~ .filter-container #label-all,
+#filter-all:checked ~ .filter-container #label-all-en,
+#filter-frontend:checked ~ .filter-container #label-frontend,
+#filter-python:checked ~ .filter-container #label-python {
+    background-color: var(--accent);
+    color: #060913;
+    border-color: var(--accent);
+}
+
+#filter-frontend:checked ~ .projects-grid .card-python {
+    display: none;
+}
+
+#filter-python:checked ~ .projects-grid .card-frontend {
+    display: none;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px); /* Efecto cristal esmerilado Premium */
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(45, 212, 191, 0.3);
+    background-color: rgba(15, 23, 42, 0.6);
+}
+
+.project-header {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    background-color: rgba(45, 212, 191, 0.15);
+    color: var(--accent);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.project-title {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.project-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.proj-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.proj-link:hover {
+    color: var(--accent);
+}
+
+/* ==========================================
+   8. SECCIÓN HABILIDADES (BADGES)
+   ========================================== */
+.skills-section {
+    padding: 4rem 0;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill-group {
+    background-color: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skill-group-title {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.skills-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.badge {
+    background-color: rgba(6, 9, 19, 0.5);
+    color: var(--text-main);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 500;
+}
+
+.badge.accent-badge {
+    border-color: var(--accent);
+    color: var(--accent);
+    background-color: rgba(45, 212, 191, 0.05);
+}
+
+/* ==========================================
+   9. SECCIÓN CONTACTO (Formulario)
+   ========================================== */
+.contact-section {
+    padding: 6rem 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    margin-top: -1.5rem;
+    margin-bottom: 3rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.form-group input, .form-group textarea {
+    background-color: rgba(6, 9, 19, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent);
+}
+
+/* ==========================================
+   10. MEDIA QUERIES (Responsividad Avanzada)
+   ========================================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Apila el logo y los enlaces verticalmente */
+        padding: 1.2rem 0;
+        gap: 0.8rem;
+    }
+
+    .navbar nav {
+        justify-content: center; /* Centra los elementos del menú */
+        width: 100%;
+        gap: 0.9rem;
+    }
+
+    .navbar nav a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar nav {
+        gap: 0.6rem; /* Ajuste para pantallas extremadamente angostas */
+    }
+
+    .navbar nav a {
+        font-size: 0.8rem;
+    }
+}

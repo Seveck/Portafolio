@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Manuel | Portafolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <header class="navbar">
+        <div class="logo">JM<span>.</span></div>
+        <nav>
+            <a href="#about" class="text-es">Sobre mí</a>
+            <a href="#about" class="text-en">About me</a>
+            
+            <a href="#projects" class="text-es">Proyectos</a>
+            <a href="#projects" class="text-en">Projects</a>
+            
+            <a href="#skills" class="text-es">Habilidades</a>
+            <a href="#skills" class="text-en">Skills</a>
+            
+            <a href="#contact" class="text-es">Contacto</a>
+            <a href="#contact" class="text-en">Contact</a>
+
+            <!-- Botón interactivo para cambiar el idioma -->
+            <button id="lang-btn" class="lang-label" aria-label="Cambiar idioma">
+                <span class="text-es">EN</span>
+                <span class="text-en">ES</span>
+            </button>
+
+            <!-- Enlace GitHub directo -->
+            <a href="https://github.com/Seveck" target="_blank" rel="noopener noreferrer" class="github-icon" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            </a>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <!-- HERO SECTION -->
+        <section class="hero" id="about">
+            <p class="greeting text-es">Hola, mi nombre es</p>
+            <p class="greeting text-en">Hello, my name is</p>
+            
+            <h1 class="main-title">Juan Manuel Gouveia</h1>
+            
+            <h2 class="subtitle text-es">Desarrollador de Software en Campuslands.</h2>
+            <h2 class="subtitle text-en">Software Developer in Training at Campuslands.</h2>
+            
+            <p class="description text-es">
+                Me apasiona resolver problemas lógicos, estructurar datos limpios y diseñar interfaces web modernas y responsivas. Formándome bajo metodologías ágiles como Scrum.
+            </p>
+            <p class="description text-en">
+                I'm passionate about solving logical problems, structuring clean data, and designing modern, responsive web interfaces. Training under agile methodologies like Scrum.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary text-es">Ver proyectos</a>
+                <a href="#projects" class="btn-primary text-en">View Projects</a>
+                
+                <a href="https://github.com/Seveck" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                    GitHub Profile
+                </a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN PROYECTOS CON FILTROS -->
+        <section class="projects-section" id="projects">
+            <h2 class="section-title text-es">Proyectos destacados</h2>
+            <h2 class="section-title text-en">Featured Projects</h2>
+            
+            <!-- Inputs tipo Radio ocultos para controlar el filtrado -->
+            <input type="radio" name="project-filter" id="filter-all" checked class="filter-radio">
+            <input type="radio" name="project-filter" id="filter-frontend" class="filter-radio">
+            <input type="radio" name="project-filter" id="filter-python" class="filter-radio">
+
+            <!-- Etiquetas visuales que actúan como botones de filtrado -->
+            <div class="filter-container">
+                <label for="filter-all" class="filter-label text-es" id="label-all">Todos</label>
+                <label for="filter-all" class="filter-label text-en" id="label-all-en">All</label>
+                
+                <label for="filter-frontend" class="filter-label" id="label-frontend">Frontend / JS</label>
+                
+                <label for="filter-python" class="filter-label" id="label-python">Python / Lógica</label>
+            </div>
+
+            <!-- Grilla de Proyectos -->
+            <div class="projects-grid">
+                
+                <!-- Proyecto 1: Patitas Felices -->
+                <div class="project-card card-frontend">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JS</span>
+                        </div>
+                        <h3 class="project-title">Fundación Patitas Felices</h3>
+                        <p class="project-desc text-es">Sitio web responsive para una fundación de rescate y adopción animal. UX cuidada y navegación intuitiva para conectar mascotas con hogares.</p>
+                        <p class="project-desc text-en">Responsive website for an animal rescue and adoption foundation. Clean UX and intuitive navigation to connect pets with loving homes.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Seveck/Patitas-felices" target="_blank" rel="noopener noreferrer" class="proj-link">Code</a>
+                            <a href="https://pataspulgosas.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-link live">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2: Acme Production -->
+                <div class="project-card card-frontend">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="tech-tag">JS / Web Components</span>
+                            <span class="tech-tag">CSS Grid</span>
+                        </div>
+                        <h3 class="project-title">Acme Production Manager</h3>
+                        <p class="project-desc text-es">Sistema de producción industrial automatizado con módulos de login, gestión de inventario de materia prima con recetas y reducción de stock en tiempo real.</p>
+                        <p class="project-desc text-en">Automated industrial production system featuring login modules, raw material inventory management with recipe allocation and real-time stock reduction.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Seveck/Gestion-de-produccion-Acme" target="_blank" rel="noopener noreferrer" class="proj-link">Code</a>
+                            <a href="https://seveck.github.io/Gestion-de-produccion-Acme/" target="_blank" rel="noopener noreferrer" class="proj-link live">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3: Biblioteca Guardian -->
+                <div class="project-card card-python">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">JSON Database</span>
+                        </div>
+                        <h3 class="project-title">JSON Library Guardian</h3>
+                        <p class="project-desc text-es">Sistema de gestión de bibliotecas en consola con persistencia de datos. Incluye un validador que detecta alteraciones e inconsistencias en bases de datos JSON.</p>
+                        <p class="project-desc text-en">Console-based library management system with data persistence. Features an integrity validator to detect unauthorized changes in JSON databases.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Seveck/gestion-biblioteca-juan-gouveia" target="_blank" rel="noopener noreferrer" class="proj-link">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN HABILIDADES E IDIOMAS -->
+        <section class="skills-section" id="skills">
+            <h2 class="section-title text-es">Habilidades e Idiomas</h2>
+            <h2 class="section-title text-en">Skills & Languages</h2>
+            
+            <div class="skills-container">
+                <!-- Tarjeta 1: Lenguajes -->
+                <div class="skill-group">
+                    <h3 class="skill-group-title text-es">Tecnologías</h3>
+                    <h3 class="skill-group-title text-en">Technologies</h3>
+                    <div class="skills-badges">
+                        <span class="badge">Python</span>
+                        <span class="badge">JavaScript</span>
+                        <span class="badge">HTML5</span>
+                        <span class="badge">CSS3</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Idiomas -->
+                <div class="skill-group">
+                    <h3 class="skill-group-title text-es">Idiomas</h3>
+                    <h3 class="skill-group-title text-en">Languages</h3>
+                    <div class="skills-badges">
+                        <span class="badge accent-badge">
+                            <span class="text-es">Español: Nativo</span>
+                            <span class="text-en">Spanish: Native</span>
+                        </span>
+                        <span class="badge accent-badge">
+                            <span class="text-es">Inglés: Intermedio (B1)</span>
+                            <span class="text-en">English: Intermediate (B1)</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Herramientas y Procesos -->
+                <div class="skill-group">
+                    <h3 class="skill-group-title text-es">Herramientas & Procesos</h3>
+                    <h3 class="skill-group-title text-en">Tools & Processes</h3>
+                    <div class="skills-badges">
+                        <span class="badge">Git & GitHub</span>
+                        <span class="badge">Scrum Framework</span>
+                        <span class="badge">Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULARIO DE CONTACTO -->
+        <section class="contact-section" id="contact">
+            <h2 class="section-title text-es">Hablemos</h2>
+            <h2 class="section-title text-en">Let's Talk</h2>
+            <p class="section-subtitle text-es">¿Tienes una propuesta o quieres colaborar en un proyecto? Déjame un mensaje.</p>
+            <p class="section-subtitle text-en">Have a proposal or want to collaborate on a project? Leave me a message.</p>
+            
+            <form action="https://formspree.io/f/tu-formspree-id-va-aqui" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name" class="text-es">Nombre</label>
+                    <label for="name" class="text-en">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Juan Perez">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="text-es">Correo Electrónico</label>
+                    <label for="email" class="text-en">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="juan@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="message" class="text-es">Mensaje</label>
+                    <label for="message" class="text-en">Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Hola Juan Manuel..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary text-es">Enviar Mensaje</button>
+                <button type="submit" class="btn-primary text-en">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
