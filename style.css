@@ -167,7 +167,7 @@ body.lang-en h1.text-en {
 }
 
 /* ==========================================
-   5. MENÚ DE NAVEGACIÓN FIJO (Sticky Navbar)
+   5. MENÚ DE NAVEGACIÓN (Navbar fijo y transparente)
    ========================================== */
 .navbar-wrapper {
     position: fixed;
@@ -175,28 +175,26 @@ body.lang-en h1.text-en {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(2, 4, 10, 0.72);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    background: transparent;
     padding: 0 1.5rem;
+    transition: backdrop-filter 0.3s ease;
 }
 
 .navbar-wrapper.scrolled {
-    background: rgba(2, 4, 10, 0.92);
-    border-bottom-color: rgba(0, 245, 212, 0.25);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 0;
+    padding: 1.5rem 0;
     max-width: 1000px;
     margin: 0 auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
+    z-index: 10;
     flex-wrap: wrap; 
     gap: 1rem;
     width: 100%;
@@ -296,12 +294,6 @@ body.lang-en h1.text-en {
     color: var(--text-muted);
     font-weight: 500;
     margin-bottom: 1.5rem;
-    transition: color 0.4s ease, text-shadow 0.4s ease;
-}
-
-.subtitle.in-view {
-    color: var(--accent) !important;
-    text-shadow: 0 0 20px rgba(0, 245, 212, 0.75), 0 0 35px rgba(0, 245, 212, 0.35);
 }
 
 .description {

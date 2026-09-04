@@ -37,25 +37,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------
-    // 3. SCROLLSPY E ILUMINACIÓN DINÁMICA DE SUBTÍTULOS Y SECCIONES
+    // 3. SCROLLSPY E ILUMINACIÓN DINÁMICA DE TÍTULOS DE SECCIÓN
     // -------------------------------------------------------------
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.navbar nav a[data-section]');
 
     function updateActiveSectionAndIllumination() {
+        // Si estamos cerca del tope de la página, mantener el navbar y textos limpios como en el diseño original
+        if (window.scrollY < 80) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            document.querySelectorAll('.section-title').forEach(title => title.classList.remove('in-view'));
+            return;
+        }
+
         const scrollPosition = window.scrollY + 200; // Offset para activación oportuna
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
-            const sectionTitles = section.querySelectorAll('.section-title, .subtitle');
+            const sectionTitles = section.querySelectorAll('.section-title');
 
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                // Iluminar subtítulos/títulos de la sección activa
+                // Iluminar títulos de las secciones correspondientes al hacer scroll
                 sectionTitles.forEach(title => title.classList.add('in-view'));
 
-                // Iluminar enlace correspondiente en el Navbar
+                // Resaltar enlace activo correspondiente en el Navbar
                 navLinks.forEach(link => {
                     if (link.getAttribute('data-section') === sectionId) {
                         link.classList.add('active');
